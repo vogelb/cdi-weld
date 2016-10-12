@@ -10,21 +10,17 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.LoggerFactory;
 
-import com.github.vogelb.cdi.Constants;
-import com.github.vogelb.cdi.ConstantsProvider;
-import com.github.vogelb.cdi.SomeService;
-
 @RunWith(CdiRunner.class)
 @AdditionalPackages(ConstantsProvider.class)
 public class CDITest {
 	
 	@Inject
-	SomeService service;
+	ServiceBean service;
 	
 	@Test
 	public void testInjection() {
 		String version = service.getVersion();
-		LoggerFactory.getLogger(getClass()).info("Got Version: " + version);
+		LoggerFactory.getLogger(getClass()).info("VERSION = " + version);
 		assertEquals(Constants.VERSION, version);
 	}
 
